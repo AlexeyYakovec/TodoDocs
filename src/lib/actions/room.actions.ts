@@ -25,12 +25,29 @@ export const createDocument = async ({
       const room = await liveblocks.createRoom(roomId, {
          metadata,
          usersAccesses,
-         defaultAccesses: [],
+         defaultAccesses: ["room:write"],
       });
 
       revalidatePath("/");
       return parseStringify(room);
    } catch (error) {
       console.log(`Error happend while creating a room: ${error}`);
+   }
+};
+
+export const getDocument = async ({
+   roomId,
+   userId,
+}: {
+   roomId: string;
+   userId: string;
+}) => {
+   try {
+      const room = await liveblocks.getRoom(roomId);
+      const hasAccess = Object.keys(room.usersAccesses).includes(userId);
+      if (!hasAccess) return null;
+      return parseStringify(room);
+   } catch (error) {
+      console.log(`Error fetching document: ${error}`);
    }
 };
