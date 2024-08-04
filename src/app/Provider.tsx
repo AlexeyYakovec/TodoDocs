@@ -6,7 +6,7 @@ import {
    ClientSideSuspense,
 } from "@liveblocks/react/suspense";
 import Loader from "@/components/shared/Loader";
-import { getClerkUsers, getDocumentUsers } from "@/lib/actions/user.actions";
+import { getClerkUsers } from "@/lib/actions/user.actions";
 
 const Provider = ({ children }: { children: React.ReactNode }) => {
    return (
