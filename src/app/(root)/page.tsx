@@ -1,3 +1,4 @@
+import { DeleteModal } from "@/components/shared/DeleteModal";
 import Header from "@/components/shared/Header";
 import AddDocumentButton from "@/components/ui/AddDocumentButton";
 import { getDocuments } from "@/lib/actions/room.actions";
@@ -64,6 +65,7 @@ const Home = async () => {
                                  </p>
                               </div>
                            </Link>
+                           <DeleteModal roomId={id} />
                         </li>
                      )
                   )}
